@@ -1,5 +1,20 @@
 <?php
 
+include 'config.php';
+
+if(isset($_POST['done'])){
+
+
+    $id = $_GET['userId'];
+  $em = $_POST['email'];
+  $pw = $_POST['password'];
+
+  $update = "UPDATE `userlist` SET `id`='$id',`email`='$em',`password`='$pw' WHERE `id`='$id'";
+
+  $updateQuery = mysqli_query($connect_db, $update);
+
+  header("location:index.php");
+}
 
 ?>
 
@@ -16,6 +31,31 @@
 </head>
 <body>
     
+<form class="container my-5" method="POST">
+    <p>Update Data</p>
+    <?php
+    $id = $_GET['userId'];
+    $display = "SELECT * FROM `userlist` WHERE id = '$id' ";
+    $displayQuery = mysqli_query($connect_db, $display);
+    $record = mysqli_fetch_array($displayQuery);
+    ?>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $record["email"]; ?>">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="<?php echo $record["password"]; ?>">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary" name="done">Submit</button>
+</form>
+<div class="container">
+<button type="button" class="btn btn-outline-info"><a href="index.php"> View List?</a></button>
+</div>
 
 
 
