@@ -37,8 +37,8 @@ while($record = mysqli_fetch_array($displayQuery)){
       <th scope="row"><?php echo $record['id']; ?></th>
       <td><?php echo $record['email']; ?></td>
       <td><?php echo $record['password']; ?></td>
-      <td><button type="button" class="btn btn-outline-success">Edit</button>
-<button type="button" class="btn btn-outline-danger">Delete</button></td>
+      <td><button type="button" class="btn btn-outline-success"><a href="update.php?userId=<?php echo $record['id']; ?>">Edit</a></button>
+<button type="button" class="btn btn-outline-danger"><a href="delete.php?userId=<?php echo $record['id']; ?>">Delete</a></button></td>
     </tr>
     <?php } ?>
    
