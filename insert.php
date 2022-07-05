@@ -1,17 +1,24 @@
-<?php 
+<?php
+// User insert till 2022-07-30
+date_default_timezone_set('Asia/Dhaka');
+$fixedDate = '2022-07-30';
+$currDate = date('Y-m-d');
+// echo $currDate;
 
-include 'config.php';
+  if($fixedDate > $currDate){
 
-if(isset($_POST['done'])){
+  include 'config.php';
 
-  $em = $_POST['email'];
-  $pw = $_POST['password'];
+  if(isset($_POST['done'])){
 
-  $insert = "INSERT INTO `userlist`(`email`, `password`) VALUES ('$em', '$pw')";
+    $em = $_POST['email'];
+    $pw = $_POST['password'];
 
-  $insertQuery = mysqli_query($connect_db, $insert);
+    $insert = "INSERT INTO `userlist`(`email`, `password`) VALUES ('$em', '$pw')";
+
+    $insertQuery = mysqli_query($connect_db, $insert);
+  }
 }
-
 ?>
 
 <!DOCTYPE html>
